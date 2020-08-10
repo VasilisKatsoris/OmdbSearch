@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.text.Html"/>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.omdb.movies.ui.moviedetails.MovieDetails" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp">
+
+            <ProgressBar
+                android:id="@+id/movieDetailsProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:indeterminate="true"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <TextView
+                android:id="@+id/movieTitle"
+                app:layout_constraintTop_toTopOf="@id/movieDetailsProgressBar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="15dp"
+                app:layout_goneMarginTop="15dp"
+                android:textSize="26sp"
+                tools:text="Avengers - Endgame"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <com.omdb.movies.utils.TextViewWithSizeableDrawable
+                android:id="@+id/imdbRatingTv"
+                app:layout_constraintTop_toBottomOf="@id/movieTitle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="20dp"
+                android:text="@{Html.fromHtml(String.format(@string/imdb_score_formater, viewModel.imdbRating))}"
+                android:drawableLeft="@drawable/imdb"
+                style="@style/rating_tv"
+                tools:text="8.3/10"/>
+
+            <TextView
+                android:id="@+id/votesTv"
+                app:layout_constraintLeft_toLeftOf="@id/imdbRatingTv"
+                app:layout_constraintTop_toBottomOf="@id/imdbRatingTv"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textSize="13sp"
+                tools:text="100.000 votes"
+                android:alpha="@{(viewModel.imdbVotes == null) ? 0f : 1f}"
+                android:text="@{String.format(@string/votes, viewModel.imdbVotes)}"/>
+
+            <com.omdb.movies.utils.TextViewWithSizeableDrawable
+                android:id="@+id/metacriticRatingTv"
+                app:layout_constraintTop_toTopOf="@id/imdbRatingTv"
+                app:layout_constraintBottom_toBottomOf="@id/imdbRatingTv"
+                app:layout_constraintLeft_toRightOf="@+id/imdbRatingTv"
+                android:layout_marginLeft="40dp"
+                android:drawableLeft="@drawable/metacritic"
+                style="@style/rating_tv"
+                tools:text="75/100"
+                android:alpha="@{(viewModel.metascore == null) ? 0f : 1f}"
+                android:text="@{Html.fromHtml(String.format(@string/metascore_formated, viewModel.metascore))}" />
+
+            <ImageView
+                android:id="@+id/movieDetailsImg"
+                app:layout_constraintTop_toBottomOf="@id/votesTv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_width="150dp"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder_poster"/>
+
+            <TextView
+                android:id="@+id/moviePlot"
+                app:layout_constraintTop_toTopOf="@id/movieDetailsImg"
+                app:layout_constraintLeft_toRightOf="@id/movieDetailsImg"
+                android:layout_marginLeft="15dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.plot}"
+                tools:text="Mpla mpla mpla mpla mpla mpla mpla mplma  mpla mpla mpla"/>
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/labelBarrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="movieDetailsImg,moviePlot" />
+
+            <TextView
+                android:id="@+id/genreTv"
+                app:layout_constraintTop_toBottomOf="@id/labelBarrier"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="5dp"
+                android:textSize="15sp"
+                android:text="@{viewModel.genre}"
+                tools:text="Drama, Action, Thriller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/movieYearRatedRuntimeTv"
+                app:layout_constraintTop_toBottomOf="@id/genreTv"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="10dp"
+                android:autoSizeTextType="uniform"
+                android:lines="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.posterSub}"
+                android:textSize="15sp"
+                tools:text="2019 | PG-13 | 187MIN"/>
+
+            <TextView
+                android:id="@+id/crewMembersTv"
+                app:layout_constraintTop_toBottomOf="@id/movieYearRatedRuntimeTv"
+                android:layout_marginTop="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Html.fromHtml(String.format(@string/crew_members, viewModel.director, viewModel.writer, viewModel.actors))}"
+                tools:text="Writer director and actors"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    
+</layout>

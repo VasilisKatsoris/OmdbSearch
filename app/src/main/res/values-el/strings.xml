@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Omdb Search</string>
+    <string name="onCallError">error</string>
+    <string name="votes">%s ψήφοι</string>
+    <string name="crew_members"><![CDATA[<b>Σκηνοθέτης:</b> %1$s <br><br> <b>Συγγραφέας: </b> %2$s <br><br>  <b>Πρωταγωνιστές: </b>%3$s]]></string>
+    <string name="Exit_questionmark">Έξοδος;</string>
+    <string name="Ok">Οκ</string>
+    <string name="Cancel">Ακύρωση</string>
+    <string name="search_for_a_movie">Αναζήτηση ταινίας</string>
+    <string name="welcome_to_movie_app">Καλώς ήρθες στο Movie App</string>
+    <string name="No_results_found">Δε βρέθηκαν αποτελέσματα</string>
+    <string name="No_connection">Δεν υπάρχει σύνδεση σε δίκτυο. Συνδεθείτε και δοκιμάστε ξανά.</string>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Omdb Search</string>
+    <string name="onCallError">error</string>
+    <string name="votes">%s votes</string>
+    <string name="crew_members"><![CDATA[<b>Director:</b> %1$s <br><br> <b>Writer: </b> %2$s <br><br>  <b>Stars: </b>%3$s]]></string>
+    <string name="Exit_questionmark">Exit?</string>
+    <string name="Ok">Ok</string>
+    <string name="Cancel">Cancel</string>
+    <string name="search_for_a_movie">Search for a movie</string>
+    <string name="welcome_to_movie_app">Welcome to Movie App</string>
+    <string name="No_results_found">No results found</string>
+    <string name="metascore_formated" translatable="false"><![CDATA[<b>%s</b>/100]]></string>
+    <string name="imdb_score_formater" translatable="false"><![CDATA[<b>%s</b>/10]]></string>
+    <string name="No_connection">No connection. Please connect to a network and try again</string>
+</resources>
