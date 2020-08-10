@@ -1,6 +1,7 @@
  
 # OmdbSearch
 
+<img src="/screenshots/screenshot.gif" align="right" width="32%"/>
 
 A showcase project that searches the OMDB database for movie titles
 
